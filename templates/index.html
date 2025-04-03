@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Contact Book</title>
+<style>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #333;
+        }
+    
+        .bg-img {
+            background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+    
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin: 50px auto;
+        }
+    
+        h1 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            padding-top: 20px;
+        }
+    
+        /* Form Styling */
+        .form-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+    
+        .form-inline label {
+            font-weight: 600;
+            color: #555;
+        }
+    
+        .form-inline input {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+    
+        .form-inline input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+        }
+    
+        .form-inline button {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+    
+        .form-inline button:hover {
+            background-color: #5a6fd1;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+    
+        /* Table Styling */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    
+        .table th {
+            background-color: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+    
+        .table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+    
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+    
+        .table tr:hover {
+            background-color: #f8f9fa;
+        }
+    
+        /* Checkbox Styling */
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+    
+        input[type="checkbox"]:checked {
+            background-color: #667eea;
+        }
+    
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+        }
+    
+        /* Button Styling */
+        .btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+    
+        .btn-danger {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+        }
+    
+        .btn-danger:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(255, 107, 107, 0.3);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-box {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .form-inline {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .form-inline input, .form-inline button {
+                width: 100%;
+            }
+            
+            .table th, .table td {
+                padding: 10px;
+            }
+        }
+    
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    
+        .table tr {
+            animation: fadeIn 0.5s ease forwards;
+        }
+    
+        .table tr:nth-child(1) { animation-delay: 0.1s; }
+        .table tr:nth-child(2) { animation-delay: 0.2s; }
+        .table tr:nth-child(3) { animation-delay: 0.3s; }
+        .table tr:nth-child(4) { animation-delay: 0.4s; }
+        .table tr:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</style>
+<h1 style="color:#2D3748"><center>TO-DO LIST</h1>
+    </head>
+    <body >
+    <div class="bg-img">
+<div class="form-box">
+<div class="wrapper">
+        <br>
+        <form acton="/saveinfo" class="form-inline" method="post">
+        {% csrf_token %}
+        <label for = "addtask">Add Task:</label>
+        <input type="text" id="addtask" placeholder="Add Task" name="addtask" required>
+        <label for = "time">Add Time:</label>
+        <input type="time" id="time" placeholder="Add Time" name="time" required>
+        <button type="submit" >Add</button>
+</form>
+<br>
+<br>
+<br>
+<div class="table-container">
+                                <br>
+                                    <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                       <thead>
+                                            <tr>
+                                                <th>Tasks</th>
+                                                <th>Time</th>
+                                                <th>Status</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                    {% for info in Add %}
+                                            <tr>
+                                                <td data-label="Tasks">{{info.AddTask}}</td>
+                                                <td data-label="Time">{{info.time}}</td>
+                                                <label class="checkbox" action="/saveinfo" method="get">
+                                                <td><input type="checkbox" name="check" value=""{% if info.published %}checked{% endif %}></td>
+                                                </label>
+                                                <td><a href="{% url 'Delete' info.id %}" class = " btn btn-danger ">Delete</a></td>
+                                            </tr>
+                                 
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>
+    </div>
+</body>
+</html>
